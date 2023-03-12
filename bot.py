@@ -1,6 +1,6 @@
 import os
-from _fbchat import Client
-from _fbchat.models import *
+from fbchat import Client
+from fbchat.models import *
 import re
 
 #6750292848344715
@@ -19,7 +19,7 @@ class HappyClasher(Client):
                 )
             
     def procced(self, message, author_id, thread_id):
-        if author_id != self.uid and str(thread_id) == "5825488547563264" and message:
+        if author_id != self.uid and str(thread_id) == "6750292848344715" and message:
             if message[0] == "~":
                 return True
 

@@ -2609,7 +2609,7 @@ class Client(object):
             for d in payload.get("deltas", []):
 
                 # Message reaction
-                if d.get("deltaMessageReaction"):
+                if False: #d.get("deltaMessageReaction"):
                     i = d["deltaMessageReaction"]
                     thread_id, thread_type = getThreadIdAndThreadType(i)
                     mid = i["messageId"]

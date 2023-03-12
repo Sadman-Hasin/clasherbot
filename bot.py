@@ -1,6 +1,6 @@
 import os
-from fbchat import Client
-from fbchat.models import *
+from _fbchat import Client
+from _fbchat.models import *
 import re
 
 #6750292848344715
@@ -10,26 +10,41 @@ import re
 
 class HappyClasher(Client):
     def onMessage(self, author_id, message_object, thread_id, thread_type, **kwargs):
-        if author_id != self.uid and str(thread_id) == "5825488547563264" and message_object.text:
-            if message_object.text[0] == "~":
-                reply = self.reply(message_object.text)
-                mention = client.fetchUserInfo(author_id)[author_id].name
-
-                client.send(
-                    Message(
-                        text=self.reply(f"@@{mention}\n{reply}"),
-                        mentions=[Mention(author_id, offset=0, length=len(mention)+1)]),
-                    thread_id=thread_id,
-                    thread_type=thread_type,
+        if self.procced(message_object.text, author_id, thread_id):
+            self.sendMessage(
+                    self.response(message_object.text),
+                    author_id,
+                    thread_id,
+                    thread_type
                 )
+            
+    def procced(self, message, author_id, thread_id):
+        if author_id != self.uid and str(thread_id) == "5825488547563264" and message:
+            if message[0] == "~":
+                return True
 
-    def reply(self, cmd):
-        if cmd == "~":
+        return False
+
+    def response(self, message):
+        if message == "~":
             return "How can I help you?"
 
-        command = cmd[1:]
+        else:
+            return "grrr, 'am sleeping, don't disturb!"
+            
+    def sendMessage(self, response, author_id, thread_id, thread_type):
+        mention = client.fetchUserInfo(author_id
+)[author_id].name
 
-        return "grrr, 'am sleeping, don't disturb!"
+        client.send(
+                Message(
+                    text=f"@{mention}\n{response}",
+                    mentions=[Mention(author_id, offset=0, length=len(mention)+1)]
+                ),
+                thread_id=thread_id,
+                thread_type=thread_type,
+            )
+        
         
 
 

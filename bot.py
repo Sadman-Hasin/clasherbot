@@ -1,3 +1,4 @@
+import os
 from fbchat import Client
 from fbchat.models import *
 import re
@@ -32,7 +33,7 @@ class HappyClasher(Client):
         
 
 
-client = HappyClasher("", "")
+client = HappyClasher(os.getenv("EMAIL", os.getenv("PASSWORD"))
 
 client.listen()
 

@@ -33,7 +33,7 @@ class HappyClasher(Client):
         
 
 
-client = HappyClasher(os.getenv("EMAIL", os.getenv("PASSWORD"))
+client = HappyClasher(os.getenv("EMAIL"), os.getenv("PASSWORD"))
 
 client.listen()
 

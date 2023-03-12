@@ -19,7 +19,7 @@ class HappyClasher(Client):
                 )
             
     def procced(self, message, author_id, thread_id):
-        if author_id != self.uid and (str(thread_id) == "6750292848344715" or str(thread_id) == "5825488547563264") and message:
+        if author_id != self.uid and (str(thread_id) == "5825488547563264" or str(thread_id) == "5825488547563264") and message:
             if message[0] == "~":
                 return True
 
@@ -30,7 +30,12 @@ class HappyClasher(Client):
             return "How can I help you?"
 
         else:
-            return "grrr, 'am sleeping, don't disturb!"
+            cmd = message[2:]
+
+            if cmd == "help":
+                return "The Prefix is \"~\".\n\n1. \"help\" - reply this content.\n\nDidn't start working on cocapi. No other features are added yet."
+
+            return "use \"~ help\" to show available commands."
             
     def sendMessage(self, response, author_id, thread_id, thread_type):
         mention = client.fetchUserInfo(author_id

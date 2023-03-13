@@ -8,3 +8,6 @@ def index():
 
 #client = HappyClasher(os.getenv("EMAIL"), os.getenv("PASSWORD"))
 #client.listen()
+
+
+client = HappyClasher("..", "..")

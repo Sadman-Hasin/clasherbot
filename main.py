@@ -1,4 +1,4 @@
-from bot import HappyClasher
+#from bot import HappyClasher
 from flask import Flask
 
 app = Flask(__name__)
@@ -6,5 +6,5 @@ app = Flask(__name__)
 def index():
     return "<p>Server Running...</p>"
 
-client = HappyClasher(os.getenv("EMAIL"), os.getenv("PASSWORD"))
-client.listen()
+#client = HappyClasher(os.getenv("EMAIL"), os.getenv("PASSWORD"))
+#client.listen()

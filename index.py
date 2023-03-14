@@ -6,8 +6,5 @@ app = Flask(__name__)
 def index():
     return "<p>Server Running...</p>"
 
-#client = HappyClasher(os.getenv("EMAIL"), os.getenv("PASSWORD"))
-#client.listen()
-
-
-client = HappyClasher("..", "..")
+client = HappyClasher(os.getenv("EMAIL"), os.getenv("PASSWORD"))
+client.listen()

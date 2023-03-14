@@ -38,7 +38,7 @@ class HappyClasher(Client):
             return "use \"~ help\" to show available commands."
             
     def sendMessage(self, response, author_id, thread_id, thread_type):
-        mention = client.fetchUserInfo(author_id
+        mention = self.fetchUserInfo(author_id
 )[author_id].name
 
         client.send(

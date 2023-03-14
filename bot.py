@@ -41,7 +41,7 @@ class HappyClasher(Client):
         mention = self.fetchUserInfo(author_id
 )[author_id].name
 
-        client.send(
+        self.send(
                 Message(
                     text=f"@{mention}\n{response}",
                     mentions=[Mention(author_id, offset=0, length=len(mention)+1)]
@@ -51,15 +51,16 @@ class HappyClasher(Client):
             )
         
 
-from flask import Flask
 
+from flask import Flask
 app = Flask(__name__)
 @app.route("/")
 def index():
+    return "<p>Started Running...</p>"
+@app.route("/run")
+def run():
     client = HappyClasher(os.getenv("EMAIL"), os.getenv("PASSWORD"))
     client.listen()
-    return "<p>Started Running...</p>"
-
 
 
 
